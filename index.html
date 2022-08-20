@@ -1,1 +1,45 @@
+<html>
+  <head>
+        <style>
+            @font-face{
+                font-family: "ps2p";
+                src: url(fonts/ps2p.tff);
+            };
+            p{
+                font-family: "ps2p";
+                font-size: 20px;
+            };
+        </style>
+  </head>
+  <body style="background: rgba(0, 0, 0, 0.01);">
+    <div id="safeTimer">
+    <p>Starting Soon!</p>
+    <p id="safeTimerDisplay">10:00</p>
+    </div>
 
+    <script type="text/javascript">function startTimer(duration, display) {
+        var timer = duration, minutes, seconds;
+        setInterval(function () {
+            minutes = parseInt(timer / 60, 10)
+            seconds = parseInt(timer % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            display.textContent = minutes + ":" + seconds;
+
+            if (--timer < 0) {
+                timer = 0;
+                display.textContent = ("Starting Now!")
+             }
+        }, 1000);
+        }
+
+        window.onload = function () {
+        var time = 10 * 60, // your time in seconds here
+        display = document.querySelector('#safeTimerDisplay');
+        startTimer(time, display);
+        };
+    </script>
+  </body>
+</html>
